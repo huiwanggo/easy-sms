@@ -68,6 +68,7 @@ func (gw *AliyunGateway) Send(ctx context.Context, phone messenger.Phone, messag
 
 	if body["Code"] == "OK" {
 		result.Status = Success
+		return result, nil
 	}
 
 	return result, errors.New(body["Message"])

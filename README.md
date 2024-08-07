@@ -30,11 +30,13 @@ func main() {
 				"accessKeySecret": "accessKeySecretTest",
 				"signName":        "阿里云短信测试",
 			},
-			"xxx": {
-				"xxx": "xxx",
+			"mitake": {
+				"username": "username",
+				"password": "password",
+				"callback": "url",
 			},
 		},
-		[]string{"aliyun", "xxx"},
+		[]string{"aliyun", "mitake"},
 		easysms.WithTimeout(5*time.Second),
 		easysms.WithStrategy(strategy.RandomStrategy{}),
 	)
@@ -94,5 +96,28 @@ map[string]gateway.Config{
 messenger.Message{
     Template: map[string]string{"aliyun": "SMS_154950909"},
     Data:     map[string]string{"code": "1234"},
+}
+```
+
+### 台湾三竹简讯
+
+- [三竹简讯](https://sms.mitake.com.tw/common/index.jsp?t=1722999600763)
+- 平台配置
+
+```
+map[string]gateway.Config{
+    "mitake": {
+        "username": "username",
+        "password": "password",
+        "callback": "发送状态回调地址（可选）",
+    },
+}
+```
+
+- 短信内容（文本）
+
+```
+messenger.Message{
+    Content: "您的验证码为: 1234",
 }
 ```
